@@ -3,7 +3,7 @@
 #include <math.h>
 #include <stdlib.h>
 int main(){
-time_t start, end;
+clock_t currentTime;
 int i=0,j=0,r;
 long a[100][100],a1[100][100],c[100][100],prod;
 //b[200][200],c[400][400],d[1000][1000],e[2000][2000],f[4000][4000],g[10000][10000],
@@ -25,7 +25,7 @@ while(i<100){
 	j=0;
 	i++;
 	}
-time(&start);
+currentTime = clock();
 for(i=0;i<100;i++){
 	for(j=0;j<100;j++)
 		{
@@ -37,9 +37,9 @@ for(i=0;i<100;i++){
 			}
 		}
 }
-time(&end);
-double vremya = difftime(end,start);
-printf("%d\n",vremya);
+currentTime = clock() - currentTime;
+currentTime = (double)currentTime / CLOCKS_PER_SEC;
+printf("%d\n",currentTime);
 system("pause");
 return 0;
 }
