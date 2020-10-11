@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <time.h>
+#include <math.h>
+#include <stdlib.h>
+int main(){
+time_t start, end;
+int i=0,j=0,r;
+long a[100][100],a1[100][100],c[100][100],prod;
+//b[200][200],c[400][400],d[1000][1000],e[2000][2000],f[4000][4000],g[10000][10000],
+srand(time(NULL));
+while(i<100){
+	while(j<100){
+		a[i][j]=rand()%100;
+		j++;
+		}
+	j=0;
+	i++;
+	}
+i=0;
+while(i<100){
+	while(j<100){
+		a1[i][j]=rand()%100;
+		j++;
+		}
+	j=0;
+	i++;
+	}
+time(&start);
+for(i=0;i<100;i++){
+	for(j=0;j<100;j++)
+		{
+		prod=0;
+		for(r=0;r<100;r++)
+			{
+			prod=prod+a[i][r]*a1[r][j];
+			c[i][j]=prod;
+			}
+		}
+}
+time(&end);
+double vremya = difftime(end,start);
+printf("%d\n",vremya);
+system("pause");
+return 0;
+}
